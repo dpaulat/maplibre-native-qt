@@ -34,6 +34,7 @@ public:
     void reset() final {}
     void setObserver(mbgl::RendererObserver &observer) final;
     void update(std::shared_ptr<mbgl::UpdateParameters> parameters) final;
+    const mbgl::TaggedScheduler &getThreadPool() const final;
 
     // These need to be called on the same thread.
     void createRenderer();

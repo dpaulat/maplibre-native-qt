@@ -1641,6 +1641,9 @@ MapPrivate::MapPrivate(Map *map, const Settings &settings, const QSize &size, qr
     auto resourceOptions = resourceOptionsFromSettings(settings);
     auto clientOptions = clientOptionsFromSettings(settings);
 
+    // Create the renderer before setting up the Map object, as the thread pool must already exist
+    createRenderer();
+
     // Setup the Map object.
     mapObj = std::make_unique<mbgl::Map>(*this,
                                          *m_mapObserver,
@@ -1696,6 +1699,10 @@ void MapPrivate::setObserver(mbgl::RendererObserver &observer) {
     if (m_mapRenderer != nullptr) {
         m_mapRenderer->setObserver(m_rendererObserver.get());
     }
+}
+
+const mbgl::TaggedScheduler &MapPrivate::getThreadPool() const {
+    return m_mapRenderer->getRendererBackend()->getThreadPool();
 }
 
 void MapPrivate::createRenderer() {
