@@ -107,4 +107,8 @@ void MapRenderer::setObserver(mbgl::RendererObserver *observer) {
 
 /*! \endcond */
 
+RendererBackend *MapRenderer::getRendererBackend() {
+    return &m_backend;
+}
+
 } // namespace QMapLibre
