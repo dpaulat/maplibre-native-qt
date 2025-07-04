@@ -1637,6 +1637,7 @@ MapPrivate::MapPrivate(Map *map, const Settings &settings, const QSize &size, qr
     connect(m_mapObserver.get(), &MapObserver::mapChanged, map, &Map::mapChanged);
     connect(m_mapObserver.get(), &MapObserver::mapLoadingFailed, map, &Map::mapLoadingFailed);
     connect(m_mapObserver.get(), &MapObserver::copyrightsChanged, map, &Map::copyrightsChanged);
+    connect(m_mapObserver.get(), &MapObserver::parsingStyle, map, &Map::parsingStyle, Qt::ConnectionType::DirectConnection);
 
     auto resourceOptions = resourceOptionsFromSettings(settings);
     auto clientOptions = clientOptionsFromSettings(settings);

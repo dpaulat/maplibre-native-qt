@@ -40,6 +40,10 @@ void MapObserver::onCameraDidChange(mbgl::MapObserver::CameraChangeMode mode) {
     }
 }
 
+void MapObserver::onWillStartParsingStyle(std::string& json) {
+    emit parsingStyle(json);
+}
+
 void MapObserver::onWillStartLoadingMap() {
     emit mapChanged(Map::MapChangeWillStartLoadingMap);
 }

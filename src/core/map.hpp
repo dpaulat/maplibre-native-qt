@@ -188,6 +188,7 @@ signals:
     void mapChanged(Map::MapChange);
     void mapLoadingFailed(Map::MapLoadingFailure, const QString &reason);
     void copyrightsChanged(const QString &copyrightsHtml);
+    void parsingStyle(std::string &json);
 
     void staticRenderFinished(const QString &error);
 
