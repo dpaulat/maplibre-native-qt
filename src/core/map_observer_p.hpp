@@ -30,6 +30,7 @@ public:
     void onCameraWillChange(mbgl::MapObserver::CameraChangeMode mode) final;
     void onCameraIsChanging() final;
     void onCameraDidChange(mbgl::MapObserver::CameraChangeMode mode) final;
+    void onWillStartParsingStyle(std::string& json) final;
     void onWillStartLoadingMap() final;
     void onDidFinishLoadingMap() final;
     void onDidFailLoadingMap(mbgl::MapLoadError error, const std::string &what) final;
@@ -44,6 +45,7 @@ signals:
     void mapChanged(Map::MapChange);
     void mapLoadingFailed(Map::MapLoadingFailure, const QString &reason);
     void copyrightsChanged(const QString &copyrightsHtml);
+    void parsingStyle(std::string &json);
 
 private:
     Q_DISABLE_COPY(MapObserver)
